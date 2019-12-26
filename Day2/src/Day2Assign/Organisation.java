@@ -9,6 +9,7 @@ public abstract class Organisation {
 	private String street;
 	private String citye;
 	private long pincode;
+	public static String[] deptlist = {"HR","Dev","Test"};
 	public int getId() {
 		return id;
 	}
