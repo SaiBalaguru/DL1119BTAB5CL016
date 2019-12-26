@@ -46,6 +46,7 @@ public class Test extends Organisation{
 
 	}
 	public static void empNODept(Organisation [] p) {
+		System.out.println("Employees without any Department");
 		for(Organisation a: p ) {
 			if(a.getDept()==null)
 			{
