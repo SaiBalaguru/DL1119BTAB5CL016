@@ -55,7 +55,7 @@ public class MyCollection {
 		System.out.println("Sorted List");
 		System.out.println(list);
 		
-		List<Student> students = new ArrayList<>();
+		List<Student> students = new ArrayList<>(); //List is an interface and Arraylist implements it
 		students.add(new Student("asha",323));
 		students.add(new Student("nina",21));
 		students.add(new Student("samir",267));
@@ -101,6 +101,7 @@ System.out.println("Sort the List using number = ");
 		}
 		System.out.println("Print names starting with 'a' ");
 		filterByLetter(students);
+		checkStudent(students,"venu");
 		
 	}
 	public static void filterByLetter(List<Student> st) {
@@ -108,8 +109,17 @@ System.out.println("Sort the List using number = ");
 			if(s.getName().startsWith("a")) {
 				System.out.println(s.getName());
 			}
+		}	
+	}
+	public static void checkStudent(List<Student> st, String name) {
+		for(Student s: st) {
+			if(s.getName().equalsIgnoreCase(name)) {
+				System.out.println("The ID of Student '" + s.getName()+"' is: "+s.getNum());
+				return;
+			}	
 		}
-		
+		System.out.println("No student of the name: '" + name+"' doesn't Exist");
+
 	}
 
 }
