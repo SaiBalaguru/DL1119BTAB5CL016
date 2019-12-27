@@ -2,6 +2,7 @@ package Collection;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -102,7 +103,15 @@ System.out.println("Sort the List using number = ");
 		System.out.println("Print names starting with 'a' ");
 		filterByLetter(students);
 		checkStudent(students,"venu");
-		
+		Hashtable<String,String> table = new Hashtable<>();
+		table.put("admin", "admin123");
+		table.put("user", "user123");
+		Enumeration<String> enums = table.keys();
+		while(enums.hasMoreElements()) {
+			String key = enums.nextElement();
+			String val = table.get(key);
+			System.out.println(val);
+		}
 	}
 	public static void filterByLetter(List<Student> st) {
 		for(Student s: st) {
