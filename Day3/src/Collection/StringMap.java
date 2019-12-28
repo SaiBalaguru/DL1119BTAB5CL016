@@ -34,7 +34,7 @@ public class StringMap {
 			}
 		}
 		System.out.println(temp.toLowerCase().length());
-		char[] ch = temp.toCharArray();
+		char[] ch = temp.toLowerCase().toCharArray();
 		Arrays.sort(ch);
 		System.out.println(new String(ch));
 	}
