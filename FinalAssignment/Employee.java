@@ -7,10 +7,6 @@ public class Employee  {
 	Role role = new Role();
 	Department dpt;
 	Employee manager;
-	
-	Employee(){
-		
-	}
 	public Employee(String name, String id, double salary, Department dept, Employee mng, String role) {
 		super();
 		this.name = name;
@@ -25,7 +21,10 @@ public class Employee  {
 	}
 	@Override
 	public String toString() {
-		return "Employee [name=" + name + ", id=" + id + ", salary=" + salary + ", dept=" + this.dpt.getDeptName() + ", mng=" + this.manager.name + ", Role="+this.role.getRole()+ " ]";
+		if(manager != null)
+			return "Employee [name=" + name + ", id=" + id + ", salary=" + salary + ", dept=" + dpt.getDeptName() + ", mng=" + manager.name + ", Role="+ role.getRole()+ " ]";
+		else 
+			return "Employee [name=" + name + ", id=" + id + ", salary=" + salary + ", dept=" + dpt.getDeptName() + ", mng=" + null + ", Role="+ role.getRole()+ " ]";
 	}
 	public String getName() {
 		return name;

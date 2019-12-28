@@ -29,7 +29,7 @@ public class Test {
 		
 	}
 	public static void listEmp(ArrayList<Employee> l) {
-		System.out.println("The list are Employees: ");
+		System.out.println("The list of Employees are: ");
 		for(Employee e: l) {
 			System.out.println(e);
 		}
