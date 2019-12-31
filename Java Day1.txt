@@ -1,0 +1,267 @@
+Java
+1) OOP
+2) Secuirity Feature
+3) Multi Threaded
+4) Robust
+5) It uses primitive datatypes also
+6) Wrapper ckasses are object counterpoint of primitive datatypes.
+7) Static means no instances can be created. The "Main" method is called by JVM.
+8) Downcasting - Implicit type conversion (int - float); upcasting - Explicit type conversion (float - int)
+9) 
+
+			Source Code (Plain text)               Compilation (javac)
+		------------------------
+			Byte_code.class (portable code)          Interpretor (java.exe)
+		------------------
+			JVM (Platform dependent)
+		------------------
+		    Platform (OS)
+
+10) Comments - // single line ; /* */ multiple lines ; /**   **/ Documentation   
+
+---------------------------------------------------------------------------------------------------------------
+
+Java Day-2
+1) There is no multiple Inheritance in Java due to Diamond problem.
+2) extends the keyword for Inheritance.
+3) Polymorphism - Any instance of subtype can be assigned to the supertype. Through Polymorphism, only overridden methods 
+can be accessed and not unique properties.
+4) Any subtype can be passed to a supertype.
+5) Interface is used to decouple dependent classes.
+6) Interfaces cannot be instanciated, that's the reason polymorphism is utilised:
+ Interface_Name interface_variable = new Implemented_Class();
+7) Abstract class can have one or more methods without implementation, whereas interface is totally abstract.
+8) Multiple inheritance is possible with Interfaces and not with abstract classes.
+9) For unrelated functiomality use interfaces and for commonalities use Abstract classes.  
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Java Day-3
+1) compareTo is in comparable interface! 
+2) compareTo has to be written with an algorithm for our preferrable sort for user defined classes.
+3) Generics - <> is used for interfaces to specify on which object they will operate.  
+4) For Arrays.sort - 
+		i) single arguement of some object array - compareTo
+		ii) Double arguement should definitely be  - array object, comparator instance/calls the comparator function)
+5) Java.util.Vector is a growing array collection. 
+6) Enumerator is an old interface and Iterator has been introduced only since Java 5. Iterator can only be used for new 
+Collections.
+7) Vector is used for multi-threaded environment.  
+8) ArrayList has better speed but not good for handling threads.
+9) Maps are another collections.
+10) HashTable is an older collection than HashMap
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Java Day 4
+
+I/O Streams
+
+1) Binary Streams ->   Input Streams   Output Streams  FileInputStream    FileOutputStream    //Exclusively for Bytes
+2) Character Stream -> Reader		Writer 	       FileReader	   FileWriter	
+3) File Object - is used for the file Manipulation
+4)  InputStream, OutputStream are abstract classes and cannot be instanciated.
+5) Serialization - is used tostore the state of the object in a file.
+6) Marker Interface - has no methods in them.
+7) For Serialization - one should implement Serializable interface - which is a marker interface and 
+it will be tell JVM that class has to be serialised.
+8) RandomAccessFile is used to access any position in the file
+9) JDBC - Java database classes. jdbc JAR is necessaty fot it to run.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+java day 5
+
+RDBS
+1) DBMS can give control access to the data. This maintains secuirity.
+2) Atomicity - can either succeed or fail. No other intermediate states.
+3) Heirarchical, network, relational & Object models = DBMS Moddels.
+4) metadata - info about a particular data. 
+5) Multi user accessability is an important feature of DBMS
+6) SQL - non procedural language and it's mostly declarative.
+7) ACID - Atomicity, Consistency, Isolation/Integrity, Durability
+8) Transaction must follow ACID properties.
+9) Levels of DB - View , Logical, Physical
+10) Schema - logical structure of the database. 
+11) Schemas at three levels:
+	1) Internal (Physical)
+	2) Conceptual (Logical)
+	3) External (View)
+12) Relation (table) tuple (row) attributes (Column) domain(Range) entity(the data)
+13) Codd - the person who laid the rules of database.
+14) Key - Primary 
+	- Condidate
+	- Surrogate - are primary keys that aren't part of the data.
+	- Foreign - primary key of one table is used as key for another table.
+	- Composite
+15) Normalisation - 1NF, 2NF, 3NF
+16) Normalisation leads to the formation of many tables.
+17) Cardinaliy 1:n, 1:1, n:1, n:n
+18) DML = Data manipulation Language
+19) DDL = Data definition language
+20) DCl = Data Control language
+21) Transition control - Commit callback savepoint
+22) sql statements are not case sensitive
+23) Arithemetic operations are also available
+24) || - concat operator
+select last_name||' , '||last_name AS "Full Name"
+from employees
+25) Alternating quoting mechanism
+select last_name||q'[it's a name']'|| first_name
+AS "Full Name"
+from employees;
+26) Name starting with a particular letter
+select first_name
+from employees
+where first_name like 'D%'
+27) functions always return a value but procedures don't
+28) using somw function
+select employee_id, concat(first_name, last_name) "NAME",
+job_id, Length(last_name),
+instr(last_name,'a') "Contains 'a'?"
+from employees
+where substr(job_id,1,2) = 'AD'
+29) rounding off function 
+select round(45.923,2),round(45.923,0),round(65.923,-2)
+30) Comparing through dates
+select last_name,hire_date
+from employees
+where hire_date<'01-feb-07';
+from dual
+where substr(job_id,1) = 'A'
+
+31) find the system date
+select sysdate from dual
+32) Rounding off the date
+select round(sysdate,'month') from dual;
+select round(sysdate,'year') from dual;
+select trunc(sysdate,'year') from dual;
+select trunc(sysdate,'month') from dual;
+
+-----------------------------------------------------------------------------------------------------------------------
+Day - 5
+1) nested functions
+		select last_name, upper(concat(substr(last_name,1,8),' US'))
+		from employees
+		where department_id = 60
+2) NVL function - converts null value to zero
+select first_name, employee_id, nvl(commission_pct,0)
+from employees
+3) use NVL along witha where clause - for a particular job_id
+ select first_name, employee_id, job_id , nvl(commission_pct*10,0),((salary*12)+(salary*12*nvl(commission_pct*10,0))) AN_SAL
+from employees
+where instr(job_id,'CLERK',3) > 0
+4) nvl2
+select last_name, salary, commission_pct, nvl2(commission_pct, 'SAL+COM','SAL') income 
+from employees
+where department_id IN (50,80);
+5) nullif function
+select first_name, LENGTH(first_name) "expr1",
+last_name,LENGTH(last_name) "expr2", nullif(LENGTH(first_name), LENGTH(last_name)) ressult 
+from employees; 
+6) Coalesce function - returns null when specified
+select last_name,manager_id,commission_pct, coalesce(commission_pct,manager_id,-1) comm
+from employees
+order by commission_pct;
+7) case Expression:
+
+select last_name, job_id, salary,
+case job_id when 'IT_PROG' then 10*salary
+            when 'ST_CLERK' then 20*salary
+            when 'SA_REP' then  15*salary
+else        salary end "Revised Salary"
+from employees
+8) Decode function: 
+select last_name, job_id,department_id, salary,
+DECODE(department_id, 30, 10*salary,
+                      50, 20*salary,
+                      80, 5*salary, salary)
+                    Revised_salary
+from employees;
+9) select last_name, salary,
+DECODE (trunc(salary/2000, 0), 0, 0.00,
+                               1, 0.09,
+                               2, 0.20,
+                               3, 0.30,
+                               4, 0.40,
+                               5, 0.42,
+                               6, 0.44,
+                                  0.45) TAX_RATE
+from employees
+where department_id = 80;
+
+
+10) stddev function
+'select  trunc(STDDEV(salary)) "STANDARD DEVIATION" 
+from employees
+11) count number of employees in each department
+select department_id, count(employee_id)
+11) on statement 
+select e.employee_id, e.last_name, e.department_id,d.department_id
+from employees e join departments d
+on (e.department_id = d.department_id);
+12) using ON, join 
+select employee_id, city, department_name
+from employees e
+join departments d
+on d.department_id = e.department_id
+join locations l
+on  d.location_id = l.location_id
+AND l.city = 'Seattle'
+from employees
+
+13) select outer.last_name, outer.department_id
+from employees outer 
+where  exists
+(select 'X' from employees 
+where department_id = outer.department_id
+and hire_date > outer.hire_date
+AND salary > outer.salary);
+14) select e.employee_id,e.last_name, e.department_id, d.department_name
+from employees e  join departments d 
+on d.department_name in (select department_name from departments d where d.department_id = e.department_id)
+
+(or)
+
+select employee_id, last_name,
+(select department_name from departments d where e.department_id = d.department_id) department
+from employees e
+order by department
+
+
+13) Chronounits, LocalDate, DateTimeFormatter are used for finding, parsing dates.
+group by department_id
+14) cartesian product is when join is invalid
+15) 1) Enclose subqueries in parenthesis.
+16) select last_name, job_id, salary
+from employees
+where job_id = (select job_id from employees where employee_id = 141)
+AND salary < (select salary from employees where employee_id = 143);
+17) select last_name, job_id, salary
+from employees 
+where salary < (select avg(salary) from employees);
+18) multirow comparison operato- in, any, all
+19) use of any 
+select last_name, employee_id,job_id,salary
+from employees
+where salary < ANY (select salary from employees where job_id = 'IT_PROG')
+AND job_id<>'IT_PROG'
+20) select department_name,sum(salary)
+from departments join employees  using (department_id)
+group by department_name 
+having sum(salary)>(1/8)*(select sum(salary) from employees);
+
+
+
+
