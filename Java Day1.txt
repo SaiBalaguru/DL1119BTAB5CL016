@@ -908,3 +908,242 @@ close cur_chief;
 end;
 /
 
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+Day - 10
+1) Handling exceptions in pl sql
+DECLARE
+    l_name customers.NAME%TYPE;
+    l_customer_id customers.customer_id%TYPE := &customer_id;
+BEGIN
+    -- get the customer
+    SELECT NAME INTO l_name
+    FROM customers
+    WHERE customer_id = l_customer_id;
+    
+    -- show the customer name   
+    dbms_output.put_line('customer name is ' || l_name);
+ 
+    EXCEPTION 
+        WHEN NO_DATA_FOUND THEN
+            dbms_output.put_line('Customer ' || l_customer_id ||  ' does not exist');
+END;
+/
+
+2) Handling more than one exception
+cl scr;
+set serveroutput on size 1000000000;
+DECLARE
+    l_name employees.last_name%TYPE;
+    l_id employees.employee_id%TYPE := &employee_id;
+BEGIN
+    -- get the customer
+    SELECT last_name INTO l_name
+    FROM employees
+    WHERE employee_id <= l_id;
+    
+    -- show the customer name   
+    dbms_output.put_line('customer name is ' || l_name);
+ 
+    EXCEPTION 
+        WHEN NO_DATA_FOUND THEN
+            dbms_output.put_line('Employee ' || l_id ||  ' does not exist');
+        when too_many_rows then 
+        DBMS_OUTPUT.PUT_LINE('Tow many rows');
+END;
+/
+
+3) Salary exception 
+
+cl scr;
+set serveroutput on;
+declare 
+salary_too_high exception;
+pragma exception_init(salary_too_high, -20007);
+salary number(20):=&salary;
+e_name employees.last_name%TYPE;
+e_id number(20);
+max_sal number(20);
+
+
+Begin
+select e.employee_id,last_name,j.max_salary
+into e_id, e_name,max_sal
+from employees e join jobs j 
+on e.job_id =j.job_id
+where e.employee_id = &id;
+if salary>max_sal then 
+raise salary_too_high;
+--else 
+--update employees
+--set salary = 
+end if;
+exception 
+when salary_too_high then 
+dbms_output.put_line('Salary is greater than '||max_sal);
+end;
+/
+
+4) declare procedure & use it: 
+
+cl scr;
+set serveroutput on;
+create or replace 
+procedure square (N int) is
+begin 
+dbms_output.put_line('The square of the number is: '||N*N);
+END;
+/
+begin
+ square(&N);
+end;
+
+5) Another example 4
+
+cl scr;
+set SERVEROUTPUT ON;
+create or replace 
+procedure findNameSalary(ID int) is
+e_name employees.last_name%type;
+e_sal employees.salary%type;
+begin 
+select last_name, salary 
+into e_name,e_sal
+from employees
+where employee_id = ID;
+dbms_output.put_line(e_name||' - '||e_sal);
+end;
+/
+begin 
+findNameSalary(&ID); 
+end;
+
+
+6) use out in a procedure
+
+cl scr;
+set serveroutput on;
+create or replace 
+procedure sum_ab(a int, b int, c out int) is
+begin
+c:= a+ b;
+end;
+/
+declare
+c int;
+begin 
+sum_ab(&a,&b,c);
+dbms_output.put_line('The sum is: '||c);
+end;
+/
+
+7) Another example for 6)
+
+cl scr;
+set SERVEROUTPUT ON;
+create or replace
+procedure findName(ID number, name out VARCHAR2)  is
+begin
+select last_name
+into name
+from employees
+where employee_id = ID;
+end;
+/
+declare 
+name VARCHAR2(20);
+begin
+findName(&ID,name);
+dbms_output.put_line('The name of the person is: '||name);
+end;
+
+
+8) Functions in PL SQl
+
+create or replace 
+function add_two(A int, B int)
+return int is
+Begin 
+return(A+B);
+end;
+/
+begin 
+dbms_output.put_line(add_two(1,2));
+end;
+
+9) Another example for functions
+
+cl scr;
+set serveroutput on;
+create or replace 
+function totSalary return int is
+s_sum number;
+begin
+select sum(salary)
+into s_sum
+from employees;
+return s_sum;
+end;
+/
+begin 
+DBMS_OUTPUT.PUT_LINE('The total salary is: '||totSalary());
+end;
+
+10) increment salary using functions using pl sql
+cl scr;
+set SERVEROUTPUT ON;
+create or replace 
+function incSal(ID int) return int is
+sal number;
+e_name varchar2(20);
+begin
+select salary,last_name
+into sal,e_name 
+from employees
+where employee_id = ID;
+DBMS_OUTPUT.PUT_LINE('Employee Name: '||e_name||'; Old Salary: '||sal);
+sal:=sal+100;
+return sal;
+end;
+/
+begin 
+DBMS_OUTPUT.PUT_line('The incremented salary is: '||incSal(100));
+end;
+/
+
+11) Declare a trigger and use it!
+
+CREATE TABLE audits (
+      audit_id         NUMBER constraint audit_id_pk PRIMARY KEY,
+      table_name       VARCHAR2(255),
+      transaction_name VARCHAR2(10),
+      by_user          VARCHAR2(30),
+      transaction_date DATE
+);
+set SERVEROUT on;
+
+CREATE OR REPLACE TRIGGER customers_audit_trg
+    AFTER 
+    UPDATE OR DELETE 
+    ON users
+    FOR EACH ROW    
+DECLARE
+   l_transaction VARCHAR2(10);
+BEGIN
+   -- determine the transaction type
+   l_transaction := CASE  
+         WHEN UPDATING THEN 'UPDATE'
+         WHEN DELETING THEN 'DELETE'
+   END;
+ 
+   -- insert a row into the audit table   
+   INSERT INTO audits (audit_id,table_name, transaction_name, by_user, transaction_date)
+   VALUES(USERS_SQ.nextval,'USERS', l_transaction, USER, SYSDATE);
+END;
+/
+update users
+set pass_word = '123456901'
+where id = 1000;
+--after updating check the audit table;
