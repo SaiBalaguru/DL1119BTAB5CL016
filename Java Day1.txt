@@ -1147,3 +1147,87 @@ update users
 set pass_word = '123456901'
 where id = 1000;
 --after updating check the audit table;
+
+
+----------------------------------------------------------------------------------------------------------
+
+PYTHON Jan 6th 2020
+
+1) REPL - real eval print loop
+2) All are objects in Python
+3) # - comments in python
+4) help(funcname) - to know about the functionalities
+5) No characters in Python
+6) Multiple assignments:- a,b,c = 67, 34.34,"hi"
+7) Strings can be multiplied
+8) a = hello, b = hi; a + b*2 >> hellohihi
+9) c = 5; c//3 - returns int value of the quotient. This is called as floor division
+10) raise to the power - **
+11) String indexing
+b  a  t  m  a  n
+0  1  2  3  4  5
+-6 -5 -4 -3 -2 -1
+
+12) Slicing in String
+a = "String"
+a[0:3] = 'str'
+13) a[2:-2] = 'rin'
+14) Slicing will not give index out of bound error
+15) String modofication is not possible -> Strings are immutable
+16) id(var) = gives storagelocation in python.
+17) sorted(varname) - for sorting
+18) Lists are mutable
+19) listname.append() - appends an entire a list 
+20) listname.extend(listname1) - adds each element of listname1 to listname.
+21) """ / ''' - are used for including new line in the string
+22) a = 
+""" hello
+how are you """
+23) """ - document string .
+
+
+
+PYTHON Jan 7th 2020
+
+1) stra  = "hello"
+2) list(stra)  >> 'h','e','l','l','o' // converts into char array
+3) in, not in  - are membership operators
+4) In python mostly the upper bound is not included.
+5) traditional in for loop -> 
+for i in range(0,n)
+print(lista)
+6) another way is to provide incremental value:
+ 
+for(start.end,increment_by)
+print(value)
+
+7) There can be an else to "for" & "while" statements also! 
+8) "pass" - it does not do anything more like a comment.
+9) def - is used for defining a function! 
+10) print everything in the same line: print(i,end="") - doesnt print a new line.
+11) list in between parathesis is caled tuple - it's immmutable.
+12) Documentation String must be the first line of the function.
+13) inner functions are possible in Python
+14) for multople arguements  - *args    //args is just another variable and it's a tuple!
+15) Decorators
+	1) FUnctions that take other functions as arguements - higher order functions
+	2) THERECAN BE A LIST functions.
+
+16) global keyword for global variables.
+17) nonlocal is another keyword for variables.
+18) Sets are enclosed in {}
+19) They don't duplicate.
+20) In jupyter it gets ordered automatically.
+21) Sets are mutable but should contain only  immutable types. So sets cannot be nested. 
+22) There's no indexing, slicing
+23)  Sets allow to pop.
+24) Maps
+	1) Duplicate values but no duplicate keys
+	2) They are unordered but can be indexed.
+	3) keys must be immutable
+	4) values can be anything
+	5) Maps are mutable.
+	6) some important functions are: dict.keys(),dict.values(),dict.items()
+
+25) In every function: uncountable key-value pairs are sent as: **kvargs
+	
