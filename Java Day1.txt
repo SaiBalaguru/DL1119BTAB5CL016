@@ -1230,4 +1230,78 @@ print(value)
 	6) some important functions are: dict.keys(),dict.values(),dict.items()
 
 25) In every function: uncountable key-value pairs are sent as: **kvargs
+
+--------------------------------------------------------------------------------------------------------------------
+
+PYTHON JAN 8th 2020
+
+1) import - is used for accessing the modules.
+2) OS module - is used for accessing the file system.
+3) The recusrionlimit is 3000.
+4) to reload a module - import importlib ; importlib.(package_name)
+5) When we import a particular feature from a module. The entire module gets a copied into
+ the RTE but access is restricted. Hence any print statment of the module woll be executed irrespectively.
+6) The instance of a class will point to the class as long as the object's members/attributes are given an additional
+assignment declaration outside the class.
+7) In calling the function of a class:
+	1) The function definition should always contain an argument since:
+	class class_name:
+	class_func()  #inside class
+
+
+	obja # object for the above class 
+	obja.class_func() # is translated class_name.class_func(obja)
+
+hence class_func declaration should be class_func(self)
+
+
+8) There's no constructor in Python classes
+9) __init__() get's called automatically when an object is informed.
+
+
+10) Here for private data members?functions we use __ (double underscore) it cannot 
+be accessed outside the class.
+11) Multiple Inheritance is possible in Python by giving prefernce to the first inheriting class.
+12) Operator Overloading is possible in Python!
+13) magic functions are used for Opeerator overloading.
+
+---------------------------------------------------------------------------------------------------------------------
+
+Jan 9th 2020
+File Handling in Python
+
+1) Three files that open for any PL - stdin,stdout,stderr
+  	fa - let it be a file object
+  	fa.open()
+	fa.seek(i) - returns position i 
+	fa.tell() - tells where is the cursor in the file
+	fa.close() - close the file.
+	fa.readline() = reads every line
+	r - read
+	w - write
+	a - append
+	fa.close() - check whether it's closed! 
+	fa.truncate() - will delete the contents of the file
+	fa.readable - whether it's readable - returns a bool
+	fa.writable - whether it's writable - returns a bool.
+
+2) str.split() - splits the string based on white space. This returns a list.
+3) str.split('\n' - split a string a newline
+4) to sort a string based on the lowercase - sorted(list,key = str.lower)
+5) another way of opening file and the coder need not worry about closing.
+
+1) eval() - This evaluates the statement inside it.
+2) For getting input - we use input(). This always returns the user input as String.
+  Hence for type conversion, we use eval(input())! 
+3) eval() - input() returns only Strings
+	    for eval(), the input has to be specified to be string with " "
+
+4) For Exception handlling - keywords - try: , except exception_name:  , raise exception_name
+5) The unspecified except should always be below all the specified except.
+6)  Inner catch/ except can't handle then outer catch/except can handle.
+7) There's a else to try: block also. It get's executed only if no exception is raised.
+8) Finally will execute irrespective o0f what happens in the try block.
+
+	with open("filename.txt") as fc:
+		vara = fc.read() 
 	
