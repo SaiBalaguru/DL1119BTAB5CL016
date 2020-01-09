@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 public class MyBinaryStream {
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {g
 		if(args.length<2) {
 			System.out.println("Usage: Java fileCopier infile outfile");
 		} else {
