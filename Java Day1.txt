@@ -1324,3 +1324,7 @@ lista = [2,3,4,5]
 listb = list(filter(lambda x: bool(x%2==0),lista))
 5) All user defined exceptions must be a child of class Exception  
 6) So an empty class temp inherits the Exception class. rest all exception should inherit that temp. 
+7) 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
