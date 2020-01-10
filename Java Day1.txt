@@ -1304,4 +1304,22 @@ File Handling in Python
 
 	with open("filename.txt") as fc:
 		vara = fc.read() 
-	
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+jan 10th 2020
+1) map(funcname,list) - funcname() will work on each element of list and return the entire operated list.
+
+eg: 
+def squaoref(a):
+	return a*a
+lista = [1,2,3,4]
+print(map(squaref,lista))
+# returns square of each value.
+
+2) filter(funcname,listc) - will pick certain elements of listc based on the algorithm in funcname()
+3) lambda functions can have only single line of execution and should return a single value.
+4) lambda can have multiple inputs but the functionality can be only one.
+lista = [2,3,4,5]
+listb = list(filter(lambda x: bool(x%2==0),lista))
+5) All user defined exceptions must be a child of class Exception  
