@@ -1324,7 +1324,27 @@ lista = [2,3,4,5]
 listb = list(filter(lambda x: bool(x%2==0),lista))
 5) All user defined exceptions must be a child of class Exception  
 6) So an empty class temp inherits the Exception class. rest all exception should inherit that temp. 
-7) 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 
+Jan 13th 2020
+
+	SQL with Python
+1) Here we use SQLite as the database.
+2) The steps to link:
+	i) Import Library
+	2) create a connection
+	3) Cursor Object
+	4) write queries
+3) import sqlite3
+4) con = sqlite3.connect('db_name')
+5) cur = con.cursor()
+6) In Python, sql statements need not be written in try & catch block
+
+
+Linking iwth Microsoft Excel
+1) Use openpyxl,pandas
+2) workbook is a property in openpyxl
+3) Pandas are also used to access and work with sql, excel .
+
+-------------------------------------------------------------------------------------------------------------------------------
