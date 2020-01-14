@@ -1348,3 +1348,34 @@ Linking iwth Microsoft Excel
 3) Pandas are also used to access and work with sql, excel .
 
 -------------------------------------------------------------------------------------------------------------------------------
+
+Jan 14th 2020
+
+1) List Comprehensions - lista = [var for var in 'Sankranti']
+2) This is similar to lambda functions with single output 
+3) numa = [x for x in range[17] if x%2 == 0]
+4) lista =[1,2,3,4], listb= [2,3,4,7,8]
+5) num = [x for x in lista for y in listb if x == y]
+6) zip(lista,listb) - converts them into a dictionary but cannot be accessed.
+7)  dict(zip(lista,listb)) - gives a list
+8) Function Decorations! - annotations in java.
+	def funcb(gen):
+		def funcc():
+			gen()
+			print("India Gate is decorated")
+		return funcc
+	def funca():
+		print("India Gate")
+	funca = funcb(funca) 
+
+	or
+	
+	@funcb
+	def funca():
+		print("India Gate") 
+	
+9) CLass methods, instance methods
+10) iterator is for class ; generator is for functions
+11) For generator: use the keyword yield
+
+
