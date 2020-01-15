@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> sample Django Project</title>
+  </head>
+  <body>
+    <h1>This is a new HTML file</h1>
+    <p>This is paragraph</p>
+    {{ city }} <! Includes the Python code here>
+    <form action = "{% url 'text_count' %}">
+      <textarea name="full" rows="5" cols="50">
+       </textarea>
+      <br/>
+      <input type="submit" name="" value="count">
+      <!-- <button type="button" name="count">count</button> -->
+    </form>
+  </body>
+</html>

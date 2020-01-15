@@ -1378,4 +1378,17 @@ Jan 14th 2020
 10) iterator is for class ; generator is for functions
 11) For generator: use the keyword yield
 
+-----------------------------------------------------------------------------------------------------
+
+jan 15th 2020
+1) Setting up environment variable for python & Python/Scripts
+2) Upgrade pip - python -m pip install --upgarde pip
+3) install django - pip install django
+4) python manage.py runserver
+
+
+
+Project
+
+
 
