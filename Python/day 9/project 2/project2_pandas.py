@@ -255,6 +255,101 @@ for id in track_name.keys():
 track_name
 
 
+# In[137]:
+
+
+df = pd.DataFrame()
+
+
+# In[138]:
+
+
+df['track_id'] = track_name.keys()
+
+
+# In[139]:
+
+
+song_name = []
+album_id = []
+album_name = []
+artist_id = []
+artist_name = []
+for key in track_name.keys():
+    song_name.append(track_name[key][0])
+    album_id.append(track_name[key][1])
+    album_name.append(track_name[key][2])
+    artist_id.append(track_name[key][3])
+    artist_name.append(track_name[key][4])
+    
+
+
+# In[140]:
+
+
+df['Song title'] = song_name
+
+
+# In[141]:
+
+
+df['Album_id'] = album_id
+
+
+# In[142]:
+
+
+df['Album Name'] = album_name
+
+
+# In[143]:
+
+
+df['Artist ID'] = artist_id
+
+
+# In[144]:
+
+
+df['Artist Name'] = artist_name
+
+
+# In[190]:
+
+
+play_id = []
+x = list(df['track_id'])
+for i in x:
+    if i in track_id[1]:
+        play_id.append(1)
+    elif i in track_id[3]:
+        play_id.append(3)
+    elif i in track_id[5]:
+        play_id.append(5)
+    elif i in track_id[8]:
+        play_id.append(8)
+#     print(i)
+#     print(i == track_id[1])
+
+
+# In[191]:
+
+
+play_id
+
+
+# In[192]:
+
+
+df.insert(0,'Playlist ID',play_id)
+
+
+# In[193]:
+
+
+df
+
+
 # In[ ]:
 
 
